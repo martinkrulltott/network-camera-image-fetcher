@@ -1,29 +1,27 @@
-# image-host
+# MJPG Image Host
+A small client and server solution to host a network MJPG stream over HTTPS, using Vue.js, Node/Express and a Let's Encrypt SSL certificate.
+## Install
+Clone with Git and run:
 
-## Project setup
-```
-npm install
-```
+    npm install
+## Server
+    npm run start
+Runs the server, which will serve both the static Vue files from the Dist folder and the local mjpg stream over HTTPS (port 443)
+## Client - Dev
+    npm run serve
+Dev server with hot reloading (port 8080)
+## Client - Prod
+    npm run build
+Builds and packages the client-side files for prod (to the Dist folder), which in turn is served by the server.
+## SSL
+The SSL certificate itself is out of scope for this project, but can be generated from Let's Encrypt using Certbot, more info at [the official Certbot documentation](https://certbot.eff.org/).
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Built using
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+ - Node
+ - Express
+ - Vue.js
+ - [MJPEG Proxy](https://github.com/legege/node-mjpeg-proxy)
+ - ESLint
+ - Node Sass
+ - Sass Loader
