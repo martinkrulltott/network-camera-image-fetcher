@@ -1,6 +1,6 @@
 <template>
   <div>
-    Camera image goes here =)
+    <img src="http://192.168.1.70:9080/mjpg/1/video.mjpg">
   </div>
 </template>
 
