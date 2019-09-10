@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-if="showStream">
-      <img src="https://kitese.duckdns.org/stream">
+      <img src="https://kitese.duckdns.org/stream" />
     </div>
-    <div v-else>
-      Hello world
+    <div v-else class="overlay" v-on:click="continueStream">
+      <span>Klicka för att fortsätta streamen</span>
     </div>
   </div>
 </template>
@@ -18,9 +18,36 @@ export default {
     };
   },
   mounted: function () {
-    setTimeout( ()=> {
-      this.showStream = false
-   }, 10000) // TODO: Change to 3 minutes for Prod
+    this.activateTimeout();
+  },
+  methods: {
+    continueStream: function() {
+      this.showStream = true;
+      this.activateTimeout();
+    },
+    activateTimeout: function() {
+      setTimeout( ()=> {
+        this.showStream = false
+      }, 120000)
+    }
   }
 }
 </script>
+
+<style lang="scss">
+.overlay {
+  background: #a2a2a2;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+</style>
