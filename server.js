@@ -8,11 +8,12 @@ const app = express()
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // Config
-const streamUrl = 'http://192.168.1.70:9080/mjpg/1/video.mjpg'
-const certPath = '/etc/letsencrypt/live/kitese.duckdns.org/'
+const STREAMURL = 'http://192.168.8.102:9080/mjpg/1/video.mjpg'
+const CERTPATH = '/etc/letsencrypt/live/kitese.duckdns.org/'
+const PORT = 8080;
 
 // Routes
-app.get('/stream', new MjpegProxy(streamUrl).proxyRequest);
+app.get('/stream', new MjpegProxy(STREAMURL).proxyRequest);
 app.get('/', (req, res) => {
   res.sendFile(__dirname, '/dist/index.html');
 });
@@ -20,10 +21,10 @@ app.get('/', (req, res) => {
 // Setup
 try {
   https.createServer({
-    key: fs.readFileSync(certPath + 'privkey.pem'),
-    cert: fs.readFileSync(certPath + 'cert.pem'),
-    ca: fs.readFileSync(certPath + 'fullchain.pem')
-  }, app).listen(443, () => {
+    key: fs.readFileSync(CERTPATH + 'privkey.pem'),
+    cert: fs.readFileSync(CERTPATH + 'cert.pem'),
+    ca: fs.readFileSync(CERTPATH + 'fullchain.pem')
+  }, app).listen(PORT, () => {
     console.log('Listening...')
   })
 } catch (e) {
