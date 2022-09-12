@@ -8,7 +8,7 @@ const app = express()
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // Config
-const STREAMURL = 'http://192.168.8.102:9080/mjpg/1/video.mjpg'
+const STREAMURL = 'http://192.168.68.111/mjpg/1/video.mjpg'
 const CERTPATH = '/etc/letsencrypt/live/kitese.duckdns.org/'
 const PORT = 8080;
 
